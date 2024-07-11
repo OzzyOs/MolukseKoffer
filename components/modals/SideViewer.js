@@ -7,12 +7,13 @@ import {
     Alert, ScrollView,
 } from 'react-native';
 import {useState} from "react";
+import modal from "react-native-paper/src/components/Modal";
 
 const SideViewer = ({ favorites }) => {
 
     const [modalVisible, setModalVisible] = useState(false);
 
-    // console.log(favorites) // data from the favorites array is being imported from the parent component above.
+    console.log(favorites) // data from the favorites array is being imported from the parent component above.
 
     const emptyList = () => {                   // If the array of 'favorites' is empty, it will return an alert.
         if (favorites && favorites.length > 0 ){      // If the array has more than 0 objects, it will set the 'setModalVisible' to true.
@@ -32,22 +33,21 @@ const SideViewer = ({ favorites }) => {
                     setModalVisible(!modalVisible);
                 }}>
 
-                <View style={{marginTop: 100, height: 752, alignSelf:'center', justifyContent:'center', backgroundColor:'background-color:rgba(0, 0, 0, 0.75);', borderBottomWidth: 1, borderTopWidth: 1}}>
+                <View style={{ flex: 1 ,marginTop: 100, height: 'auto', width: 400 , alignItems:'center', justifyContent:'center', backgroundColor:'background-color:rgba(0, 0, 0, 0.75);', borderBottomWidth: 1, borderTopWidth: 1}}>
 
                     <Pressable
-                        style={[styles.button, styles.buttonClose]}
+                        style={[ styles.buttonClose]}
                         onPress={() => setModalVisible(!modalVisible)}>
                         <Text style={styles.textStyle}>Sluiten</Text>
                     </Pressable>
 
-
                     <ScrollView>
                         {favorites?.map(data => (
-                        <View key={data.id} style={styles.modalView}>
-                            <View style={{display: 'flex' ,justifyContent: 'center', alignItems: 'center', width: 275}}>
-                            <Text style={{marginBottom: 10, fontWeight:'bold', fontSize: 25, marginTop: 10}}>{data.name}</Text>
-                            <Text style={{marginTop: 75, fontSize: 20}}>{data.description}</Text>
-                            <View style={{display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: 'orange', height: 50, width: 100, borderRadius: 10, marginTop: 100}}>
+                        <View key={data.id} style={styles.card}>
+                            <View style={{justifyContent: 'center', alignItems: 'center', width: 300}}>
+                                <Text style={{marginVertical: 15, fontSize: 25, fontWeight: 'bold'}}>{data.name}</Text>
+                            <Text style={{fontSize: 16}}>{data.description}</Text>
+                            <View style={{display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: 'orange', height: 50, width: 100, borderRadius: 10, marginTop: 25}}>
                                 <Text style={{fontWeight:'bold', fontSize: 20}}>{data.rating} / 5</Text>
                             </View>
                             </View>
@@ -58,24 +58,23 @@ const SideViewer = ({ favorites }) => {
                 </View>
             </Modal>
             <Pressable
-                style={[styles.button, styles.buttonOpen]}
-                onPress={() => emptyList(true)}>
-                <Text style={styles.textStyle}>Favorites</Text>
+                style={[ styles.buttonOpen]}
+                onPress={emptyList}>
+            <Text style={styles.textStyle}>Favorites</Text>
             </Pressable>
         </View>
     );
 };
 
 const styles = StyleSheet.create({
-    modalView: {
+    card: {
+        width: 350,
         marginTop: 1,
-        borderWidth: 1,
-        margin: 20,
-        height: 400,
-        width: 400,
-        backgroundColor: 'white',
+        borderWidth: 2,
+        paddingHorizontal: 20,
+        height: 200,
+        backgroundColor: '#fff',
         borderRadius: 20,
-        padding: 15,
         alignItems: 'center',
         shadowColor: '#000',
         shadowOffset: {
