@@ -1,13 +1,43 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet} from 'react-native';
+import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
+import { NavigationContainer } from '@react-navigation/native';
+import SettingsView from "./components/SettingsView";
+import LocationView from "./components/LocationView";
+import HomeView from "./components/HomeView";
+import {useEffect, useState} from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
+const Tab=createBottomTabNavigator();
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+
+    const [mark, setMark] = useState([]); // set fetched data to 'mark'.
+
+    useEffect(() => { // TODO remove and refactor to a favorites list.
+        fetch('https://stud.hosted.hr.nl/0933530/webserviceprg07/Cake.json')
+            .then(response => response.json())
+            .then(data => {
+                setMark(data);
+            })
+            .catch(error => {
+                console.error("Error fetching data:", error);
+            });
+    }, []);
+
+    console.log(mark)
+
+    return (
+        <NavigationContainer>
+            <Tab.Navigator>
+                <Tab.Screen name="Home">
+                    {props => <HomeView {...props} mark={mark} />}
+                </Tab.Screen>
+                <Tab.Screen name="Map">
+                    {props => <LocationView {...props} mark={mark} />}
+                </Tab.Screen>
+                <Tab.Screen name="Settings" component={SettingsView} />
+            </Tab.Navigator>
+        </NavigationContainer>
+    );
 }
 
 const styles = StyleSheet.create({

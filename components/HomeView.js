@@ -1,0 +1,103 @@
+import {Alert, ScrollView, Text, View, StyleSheet, Pressable} from "react-native";
+import { AntDesign } from '@expo/vector-icons';
+import {useNavigation} from "@react-navigation/native";
+import LocationView from "./LocationView";
+
+const HomeView = ({mark}) => {
+
+    const navigation = useNavigation()
+
+    return (
+
+        <View style={styles.container}>
+            <Text style={styles.title}> Pancake Restaurants </Text>
+            <ScrollView style={styles.scrollContainer}>
+
+            {mark?.map((data, index) => (
+                <View key={index} style={styles.card}>
+                    <Text style={styles.cardTitle}>{data.name}</Text>
+
+                    <Text style={styles.cardDescription}>{data.description}</Text>
+
+                    <View style={styles.cardContent}>
+
+                            <View style={styles.cardRatingContainer}>
+
+                                <Text style={styles.cardRating}>{data.rating} / 5</Text>
+
+                            </View>
+
+                            <AntDesign key={data.id} name="hearto" size={24} color={"red"}
+                                       style={{ marginLeft: 20, marginTop: 5}} onPress={()=>Alert.alert('lol')}
+                            />
+                    </View>
+                    <Pressable key={data.id} onPress={()=> navigation.navigate('Map', { mark }) }><Text>Go to location</Text></Pressable>
+                    {/* Pass the {data} parameter to the 'Map' component */}
+                </View>
+            ))}
+            </ScrollView>
+        </View>
+    )
+}
+
+export default HomeView;
+
+
+const styles = StyleSheet.create({
+    container: {
+        justifyContent: 'center',
+        alignItems:'center'
+    },
+    title: {
+        fontSize:35,
+        fontWeight: "bold" ,
+        alignSelf:'center',
+        marginTop: 20,
+        marginBottom: 20
+    },
+    scrollContainer: {
+        borderTopWidth: 3,
+        borderColor:'orange'
+    },
+    card: {
+        alignContent:'center',
+        borderWidth: 2,
+        borderColor: 'gold',
+        backgroundColor: 'rgba(255,165,0, 0.3)',
+        borderRadius: 5,
+        marginBottom: 50,
+        padding: 10,
+        width: 400,
+        height: 200
+    },
+    cardTitle: {
+        alignSelf: 'center',
+        fontWeight: "bold",
+        fontSize: 22,
+        marginBottom: 15
+    },
+    cardDescription: {
+        fontSize: 18,
+        alignSelf:'center'
+    },
+    cardContent: {
+        flexDirection:'row' ,
+        alignSelf: 'center',
+        marginTop: 50,
+        height: 40,
+        width: 120,
+        justifyContent:'space-between'
+    },
+    cardRatingContainer: {
+        backgroundColor: 'orange',
+        borderRadius: 5,
+        borderWidth: 2,
+        width: 100
+    },
+    cardRating: {
+        alignSelf: 'center',
+        fontWeight: "bold",
+        fontSize: 25
+    }
+
+})
