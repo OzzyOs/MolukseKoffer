@@ -1,12 +1,15 @@
 import {Text, View} from "react-native";
 import MapView, {Callout, Marker} from "react-native-maps";
 import {useEffect, useRef} from "react";
+import SideViewer from "./modals/SideViewer";
 
 const LocationView = ({mark, route}) => {
 
     // const { data } = route.params;  // Extract the data from the route parameters passed from the homeview.
 
     // const mapViewRef = useRef(mark);
+
+
 
     const initialRegion={
         latitude: 51.926517,
@@ -29,7 +32,7 @@ const LocationView = ({mark, route}) => {
 
     return (
         <View style={{flex: 1, borderTopWidth: 2, borderBottomWidth: 2}}>
-
+            <SideViewer />
             <MapView style={{height: '100%', width: '100%'}} initialRegion={initialRegion} showsUserLocation={true} showsCompass={true}>
 
                 {mark?.map(data => (                   // Map out a new marker for each object in the JSON.

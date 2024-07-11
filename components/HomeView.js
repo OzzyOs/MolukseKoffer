@@ -2,18 +2,36 @@ import {Alert, ScrollView, Text, View, StyleSheet, Pressable} from "react-native
 import { AntDesign } from '@expo/vector-icons';
 import {useNavigation} from "@react-navigation/native";
 import LocationView from "./LocationView";
+import SettingsView from "./SettingsView";
+import SideViewer from "./modals/SideViewer";
+import {useState} from "react";
 
 const HomeView = ({mark}) => {
 
+    const [ favorites, setFavorites ] = useState([]);
+
     const navigation = useNavigation()
+
+
+    const saveFavorite = async () => {
+
+    }
+
+    const addFavorite = (data) => {
+        setFavorites([...favorites, data])
+    }
 
     return (
 
         <View style={styles.container}>
+
             <Text style={styles.title}> Pancake Restaurants </Text>
+
+            <SideViewer favorites={favorites} />
+
             <ScrollView style={styles.scrollContainer}>
 
-            {mark?.map((data, index) => (
+                {mark?.map((data, index) => (
                 <View key={index} style={styles.card}>
                     <Text style={styles.cardTitle}>{data.name}</Text>
 
@@ -28,7 +46,7 @@ const HomeView = ({mark}) => {
                             </View>
 
                             <AntDesign key={data.id} name="hearto" size={24} color={"red"}
-                                       style={{ marginLeft: 20, marginTop: 5}} onPress={()=>Alert.alert('lol')}
+                                       style={{ marginLeft: 20, marginTop: 5}} onPress={()=> addFavorite(data)}
                             />
                     </View>
                     <Pressable key={data.id} onPress={()=> navigation.navigate('Map', { mark }) }><Text>Go to location</Text></Pressable>
@@ -45,8 +63,7 @@ export default HomeView;
 
 const styles = StyleSheet.create({
     container: {
-        justifyContent: 'center',
-        alignItems:'center'
+        flex: 1,
     },
     title: {
         fontSize:35,
