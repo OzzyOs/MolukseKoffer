@@ -7,13 +7,11 @@ import {
     Alert, ScrollView,
 } from 'react-native';
 import {useState} from "react";
-import modal from "react-native-paper/src/components/Modal";
+import {Button} from "react-native-paper";
 
-const SideViewer = ({ favorites }) => {
+const SideViewer = ({ favorites, removeFavorites }) => {
 
     const [modalVisible, setModalVisible] = useState(false);
-
-    console.log(favorites) // data from the favorites array is being imported from the parent component above.
 
     const emptyList = () => {                   // If the array of 'favorites' is empty, it will return an alert.
         if (favorites && favorites.length > 0 ){      // If the array has more than 0 objects, it will set the 'setModalVisible' to true.
@@ -49,6 +47,7 @@ const SideViewer = ({ favorites }) => {
                             <Text style={{fontSize: 16}}>{data.description}</Text>
                             <View style={{display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: 'orange', height: 50, width: 100, borderRadius: 10, marginTop: 25}}>
                                 <Text style={{fontWeight:'bold', fontSize: 20}}>{data.rating} / 5</Text>
+                                <Button onPress={() => removeFavorites(data.id)} />
                             </View>
                             </View>
                         </View>

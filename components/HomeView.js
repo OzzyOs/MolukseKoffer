@@ -1,10 +1,9 @@
-import {Alert, ScrollView, Text, View, StyleSheet, Pressable} from "react-native";
+import {ScrollView, Text, View, StyleSheet, Pressable} from "react-native";
 import { AntDesign } from '@expo/vector-icons';
 import {useNavigation} from "@react-navigation/native";
-import LocationView from "./LocationView";
-import SettingsView from "./SettingsView";
 import SideViewer from "./modals/SideViewer";
-import {useState} from "react";
+import {useEffect, useState} from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const HomeView = ({mark}) => {
 
@@ -12,14 +11,41 @@ const HomeView = ({mark}) => {
 
     const navigation = useNavigation()
 
+    useEffect(() => {
+        const loadMyFavorites = async () => {
+            try {
+                const favoritesInfo = await AsyncStorage.getItem('favorites');
+                if (favoritesInfo !== null) {
+                    setFavorites(JSON.parse(favoritesInfo))
+                }
+            } catch (error) {
+                console.log("Something went wrong, failed to load restaurants.")
+            }
+        };
 
-    const saveFavorite = async () => {
+        loadMyFavorites();
+    }, []);
 
-    }
 
-    const addFavorite = (data) => {
-        setFavorites([...favorites, data])
-    }
+    const saveFavorite = async (data) => {
+    try {
+        const myFavorites = [...favorites, data];
+        setFavorites(myFavorites);
+        await AsyncStorage.setItem('favorites', JSON.stringify(myFavorites));
+    } catch (error) {
+        console.log("Something went wrong, restaurant did not get saved.")
+     }
+    };
+
+    const removeFavorites = async (id) => {
+        try {
+            const myFavorites = favorites.filter(item => item.id !== id);
+            setFavorites(myFavorites);
+            await AsyncStorage.setItem('favorites', JSON.stringify(myFavorites));
+        } catch (error) {
+            console.log("Something went wrong, failed to remove restaurant.", error)
+        }
+    };
 
     return (
 
@@ -27,7 +53,7 @@ const HomeView = ({mark}) => {
 
             <Text style={styles.title}> Pancake Restaurants </Text>
 
-            <SideViewer favorites={favorites} />
+            <SideViewer favorites={favorites} removeFavorites={removeFavorites}/>
 
             <ScrollView style={styles.scrollContainer}>
 
@@ -46,8 +72,12 @@ const HomeView = ({mark}) => {
                             </View>
 
                             <AntDesign key={data.id} name="hearto" size={24} color={"red"}
-                                       style={{ marginLeft: 20, marginTop: 5}} onPress={()=> addFavorite(data)}
+                                       style={{ marginLeft: 20, marginTop: 5}} onPress={()=> saveFavorite(data)}
                             />
+
+                        <AntDesign name="hearto" size={24} color={"purple"}
+                                   style={{ marginLeft: 20, marginTop: 5}} onPress={() => removeFavorites(data.id)}
+                        />
                     </View>
                     <Pressable key={data.id} onPress={()=> navigation.navigate('Map', { mark }) }><Text>Go to location</Text></Pressable>
                     {/* Pass the {data} parameter to the 'Map' component */}
