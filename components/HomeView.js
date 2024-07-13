@@ -47,13 +47,17 @@ const HomeView = ({mark}) => {
         }
     };
 
+    console.log()
+
     return (
 
         <View style={styles.container}>
 
             <Text style={styles.title}> Pancake Restaurants </Text>
+            <View style={{ marginBottom: 5}}>
 
             <SideViewer favorites={favorites} removeFavorites={removeFavorites}/>
+            </View>
 
             <ScrollView style={styles.scrollContainer}>
 
@@ -103,8 +107,6 @@ const styles = StyleSheet.create({
         marginBottom: 20
     },
     scrollContainer: {
-        borderTopWidth: 3,
-        borderColor:'orange'
     },
     card: {
         alignContent:'center',

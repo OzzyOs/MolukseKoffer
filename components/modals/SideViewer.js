@@ -7,7 +7,6 @@ import {
     Alert, ScrollView,
 } from 'react-native';
 import {useState} from "react";
-import {Button} from "react-native-paper";
 
 const SideViewer = ({ favorites, removeFavorites }) => {
 
@@ -17,7 +16,7 @@ const SideViewer = ({ favorites, removeFavorites }) => {
         if (favorites && favorites.length > 0 ){      // If the array has more than 0 objects, it will set the 'setModalVisible' to true.
             setModalVisible(true);
         } else {
-            Alert.alert('Er zijn geen favorieten..')
+            Alert.alert('There are no favorite restaurants to load.')
         }};
 
     return (
@@ -27,7 +26,6 @@ const SideViewer = ({ favorites, removeFavorites }) => {
                 transparent={true}
                 visible={modalVisible}
                 onRequestClose={() => {
-                    Alert.alert('Modal has been closed.');
                     setModalVisible(!modalVisible);
                 }}>
 
@@ -47,8 +45,10 @@ const SideViewer = ({ favorites, removeFavorites }) => {
                             <Text style={{fontSize: 16}}>{data.description}</Text>
                             <View style={{display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: 'orange', height: 50, width: 100, borderRadius: 10, marginTop: 25}}>
                                 <Text style={{fontWeight:'bold', fontSize: 20}}>{data.rating} / 5</Text>
-                                <Button onPress={() => removeFavorites(data.id)} />
                             </View>
+                                <Pressable onPress={()=> removeFavorites(data.id)} style={{borderWidth: 2, width: 100, height: 30, alignItems: "center"}}>
+                                    <Text style={{fontSize: 20}}>Remove</Text>
+                                </Pressable>
                             </View>
                         </View>
                     ))}
