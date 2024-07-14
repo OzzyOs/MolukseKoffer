@@ -47,8 +47,6 @@ const HomeView = ({mark}) => {
         }
     };
 
-    console.log()
-
     return (
 
         <View style={styles.container}>
@@ -83,7 +81,7 @@ const HomeView = ({mark}) => {
                                    style={{ marginLeft: 20, marginTop: 5}} onPress={() => removeFavorites(data.id)}
                         />
                     </View>
-                    <Pressable key={data.id} onPress={()=> navigation.navigate('Map', { mark }) }><Text>Go to location</Text></Pressable>
+                    <Pressable key={data.id} onPress={()=> navigation.navigate('Map', { data }) }><Text>Go to location</Text></Pressable>
                     {/* Pass the {data} parameter to the 'Map' component */}
                 </View>
             ))}

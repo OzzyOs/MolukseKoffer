@@ -1,34 +1,35 @@
 import {Text, View} from "react-native";
 import MapView, {Callout, Marker} from "react-native-maps";
+import {useEffect, useRef} from "react";
 
-const LocationView = ({mark}) => {
+const LocationView = ({mark, route}) => {
 
-    // const { data } = route.params;  // Extract the data from the route parameters passed from the homeview.
+    const { data } = route.params;  // Extract the data from the route parameters passed from the homeview.
 
-    // const mapViewRef = useRef(mark);
+    const mapViewRef = useRef(null);
 
     const initialRegion={
-        latitude: 51.926517,
+        latitude: 51.9265,
         longitude: 4.462456,
         latitudeDelta: 0.0922,
         longitudeDelta: 0.0421,
     };
 
-    // useEffect(() => {
-    //     if (data && mapViewRef.current) {
-    //         const newRegion = {
-    //             latitude: data.coordinates.latitude,
-    //             longitude: data.coordinates.longitude,
-    //             latitudeDelta: 0.001,
-    //             longitudeDelta: 0.002,
-    //         };
-    //         mapViewRef.current.animateToRegion(newRegion, 100);  // Animate to the new region
-    //     }
-    // }, [data]);
+    useEffect(() => {
+        if (data && mapViewRef.current) {
+            const newRegion = {
+                latitude: data.coordinates.latitude,
+                longitude: data.coordinates.longitude,
+                latitudeDelta: 0.001,
+                longitudeDelta: 0.002,
+            };
+            mapViewRef.current.animateToRegion(newRegion, 1000);  // Animate to the new region
+        }
+    }, [data]);
 
     return (
         <View style={{flex: 1, borderTopWidth: 2, borderBottomWidth: 2}}>
-            <MapView style={{height: '100%', width: '100%'}} initialRegion={initialRegion} showsUserLocation={true} showsCompass={true}>
+            <MapView style={{height: '100%', width: '100%'}} initialRegion={initialRegion} showsUserLocation={true} showsCompass={true} ref={mapViewRef}>
 
                 {mark?.map(data => (                   // Map out a new marker for each object in the JSON.
 
