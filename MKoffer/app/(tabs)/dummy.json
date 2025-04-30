@@ -1,0 +1,37 @@
+[
+  {
+    "title": "This is a first time!",
+    "description": "Hello!",
+    "content": " WOWOWOW"
+  },
+  {
+    "title": "A Day in the Life",
+    "description": "Sharing a regular Tuesday",
+    "content": "Woke up, had coffee, built something amazing with React Native."
+  },
+  {
+    "title": "Code & Chill",
+    "description": "How I relax while programming",
+    "content": "Sometimes, lo-fi beats and a cup of tea make debugging so much easier."
+  },
+  {
+    "title": "Lessons from Failure",
+    "description": "Things that went wrong this week",
+    "content": "Tried to deploy... broke everything. But I learned a ton!"
+  },
+  {
+    "title": "My Dev Setup",
+    "description": "The tools I can't live without",
+    "content": "VSCode, Expo Go, GitHub Copilot, and ChatGPT — that’s my stack!"
+  },
+  {
+    "title": "Building My First App",
+    "description": "The beginning of my journey",
+    "content": "This project is helping me learn how to structure code and stay consistent."
+  },
+  {
+    "title": "Why I Love JavaScript",
+    "description": "Some thoughts on the language",
+    "content": "It’s weird, it’s flexible, and it lets me build cool things fast."
+  }
+]

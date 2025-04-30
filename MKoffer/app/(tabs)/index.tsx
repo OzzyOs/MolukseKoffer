@@ -1,18 +1,33 @@
-import { Image, StyleSheet, Platform, View, Text } from 'react-native';
+import {StyleSheet, View, Text, ScrollView, FlatList} from 'react-native';
 import ContentCard from "@/components/cards/ContentCard";
+import {useEffect, useState} from "react";
+import dummyData from './dummy.json'; // <-- Import from assets
 
-
+type DummyPost = {
+    title: string;
+    description: string;
+    content: string;
+};
 export default function HomeScreen() {
+    const [data, setData] = useState<DummyPost[]>([]);
+
+    useEffect(()=>{
+        setData(dummyData)
+    })
+    // console.log(dummyData)
+
   return (
-    <View id="Body Wrapper" style={{flex: 1, justifyContent: 'center', alignItems: 'center'}} >
-        <View>
-            <Text>Welcome</Text>
-        </View>
-        <ContentCard Content={""} Title={"Welcome"} Description={"This is my first post"}/>
-        <View>
-            <Text>This is the content window!</Text>
-        </View>
-    </View>
+      <View style={{flex: 1, justifyContent: 'center', alignContent: "center", width: '100%'}}>
+          <View id="Header" style={{width: '100%', justifyContent:'center', alignItems:'center', marginTop: 50, borderBottomWidth: 1, marginBottom: 20}}>
+              <Text style={{fontSize: 40, fontWeight:'bold'}}>Welcome</Text>
+          </View>
+
+          <FlatList data={data} renderItem={({item}) => (
+              <View id="Content Card Wrapper" style={{marginBottom: 5, alignItems: 'center' }}>
+                  <ContentCard Content={item?.content} Title={item?.title} Description={item?.description}/>
+              </View>
+          )}/>
+      </View>
   );
 }
 

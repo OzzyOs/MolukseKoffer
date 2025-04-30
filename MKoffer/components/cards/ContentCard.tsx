@@ -9,7 +9,16 @@ type ContentCardProps = {
 export default function ContentCard({Title, Description, Content } : ContentCardProps) {
 
     return (
-        <View id="Card Body" style={{flex: 1, borderWidth: 1, maxHeight: 300, width: 400, borderRadius: 5, padding: 10}}>
+        <View id="Card Body"
+              style={{
+                  borderWidth: 1,
+                  minHeight: 300,
+                  maxHeight: 300,
+                  minWidth: 400,
+                  maxWidth: 400,
+                  borderRadius: 5,
+                  padding: 10}}
+        >
             <Text style={{fontWeight: "bold", fontSize: 28}}>{Title}</Text>
             <Text>{Description}</Text>
             <Text>{Content}</Text>
