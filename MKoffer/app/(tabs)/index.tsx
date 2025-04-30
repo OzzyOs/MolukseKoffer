@@ -1,7 +1,8 @@
 import {StyleSheet, View, Text, FlatList, Modal, Button, Pressable} from 'react-native';
 import ContentCard from "@/components/cards/ContentCard";
 import {useEffect, useState} from "react";
-import dummyData from './dummy.json'; // <-- Import from assets
+import dummyData from './dummy.json';
+import UploadModal from "@/components/modals/UploadModal"; // <-- Import from assets
 
 type DummyPost = {
     title: string;
@@ -32,13 +33,9 @@ export default function HomeScreen() {
           )}/>
 
           <Button title={"Upload"} onPress={()=> setVisible(true)}/>
-          <Modal visible={visible} onRequestClose={()=> setVisible(!visible)} animationType={"slide"} >
-              <Pressable
-                  style={{height: 25,borderWidth: 1}}
-                  onPress={() => setVisible(!visible)}>
-                  <Text>Hide Modal</Text>
-              </Pressable>
-          </Modal>
+              <Modal visible={visible} animationType={"slide"} >
+                <UploadModal setVisible={setVisible} />
+              </Modal>
       </View>
   );
 }

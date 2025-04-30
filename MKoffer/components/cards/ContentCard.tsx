@@ -1,4 +1,5 @@
-import { View, Text,  } from 'react-native';
+import {View, Text, Pressable} from 'react-native';
+import { useRouter } from 'expo-router';
 
 type ContentCardProps = {
     Title: string;
@@ -7,6 +8,7 @@ type ContentCardProps = {
 };
 
 export default function ContentCard({Title, Description, Content } : ContentCardProps) {
+    const router = useRouter();
 
     return (
         <View id="Card Body"
@@ -21,8 +23,13 @@ export default function ContentCard({Title, Description, Content } : ContentCard
                   backgroundColor:'lightgray'
         }}
         >
-            <Text style={{fontWeight: "bold", fontSize: 28}}>{Title}</Text>
-            <Text>{Description}</Text>
-            <Text>{Content}</Text>
+            <View>
+                <Text style={{fontWeight: "bold", fontSize: 28}}>{Title}</Text>
+                <Text>{Description}</Text>
+                <Text>{Content}</Text>
+            </View>
+            <Pressable style={{height: 25}} onPress={()=> router.navigate('/screens/PhotoView')}>
+                <Text>Details</Text>
+            </Pressable>
         </View>)
 }
