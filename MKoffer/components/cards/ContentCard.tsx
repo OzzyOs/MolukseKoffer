@@ -1,4 +1,4 @@
-import { Image, StyleSheet, Platform, View, Text,  } from 'react-native';
+import { View, Text,  } from 'react-native';
 
 type ContentCardProps = {
     Title: string;
