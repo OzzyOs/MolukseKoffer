@@ -17,7 +17,9 @@ export default function ContentCard({Title, Description, Content } : ContentCard
                   minWidth: 400,
                   maxWidth: 400,
                   borderRadius: 5,
-                  padding: 10}}
+                  padding: 10,
+                  backgroundColor:'lightgray'
+        }}
         >
             <Text style={{fontWeight: "bold", fontSize: 28}}>{Title}</Text>
             <Text>{Description}</Text>

@@ -17,14 +17,17 @@ export default function HomeScreen() {
     // console.log(dummyData)
 
   return (
-      <View style={{flex: 1, justifyContent: 'center', alignContent: "center", width: '100%'}}>
-          <View id="Header" style={{width: '100%', justifyContent:'center', alignItems:'center', marginTop: 50, borderBottomWidth: 1, marginBottom: 20}}>
+      <View style={{flex: 1, justifyContent: 'center', alignContent: "center", width: '100%', backgroundColor: '#C1D0BC'}}>
+
+          <View id="Header" style={{width: '100%', justifyContent:'center', alignItems:'center', marginTop: 50, borderBottomWidth: 1,}}>
               <Text style={{fontSize: 40, fontWeight:'bold'}}>Welcome</Text>
           </View>
 
           <FlatList data={data} renderItem={({item}) => (
-              <View id="Content Card Wrapper" style={{marginBottom: 5, alignItems: 'center' }}>
-                  <ContentCard Content={item?.content} Title={item?.title} Description={item?.description}/>
+              <View style={{backgroundColor: '#FFF6E7'}}>
+                  <View id="Content Card Wrapper" style={{marginVertical: 20, alignItems: 'center'}}>
+                      <ContentCard Content={item?.content} Title={item?.title} Description={item?.description}/>
+                  </View>
               </View>
           )}/>
       </View>
