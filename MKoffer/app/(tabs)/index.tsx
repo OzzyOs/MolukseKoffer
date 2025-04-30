@@ -1,4 +1,4 @@
-import {StyleSheet, View, Text, FlatList} from 'react-native';
+import {StyleSheet, View, Text, FlatList, Modal, TouchableOpacity, Button, Pressable} from 'react-native';
 import ContentCard from "@/components/cards/ContentCard";
 import {useEffect, useState} from "react";
 import dummyData from './dummy.json'; // <-- Import from assets
@@ -10,7 +10,7 @@ type DummyPost = {
 };
 export default function HomeScreen() {
     const [data, setData] = useState<DummyPost[]>([]);
-
+    const [visible, setVisible] = useState(false);
     useEffect(()=>{
         setData(dummyData)
     })
@@ -30,6 +30,15 @@ export default function HomeScreen() {
                   </View>
               </View>
           )}/>
+
+          <Button title={"Upload"} onPress={()=> setVisible(true)}/>
+          <Modal visible={visible} onRequestClose={()=> setVisible(!visible)} animationType={"slide"} >
+              <Pressable
+                  style={{height: 25,borderWidth: 1}}
+                  onPress={() => setVisible(!visible)}>
+                  <Text>Hide Modal</Text>
+              </Pressable>
+          </Modal>
       </View>
   );
 }
