@@ -1,4 +1,4 @@
-import {StyleSheet, View, Text, FlatList, Modal, TouchableOpacity, Button, Pressable} from 'react-native';
+import {StyleSheet, View, Text, FlatList, Modal, Button, Pressable} from 'react-native';
 import ContentCard from "@/components/cards/ContentCard";
 import {useEffect, useState} from "react";
 import dummyData from './dummy.json'; // <-- Import from assets
