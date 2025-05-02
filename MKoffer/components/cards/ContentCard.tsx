@@ -9,7 +9,7 @@ type ContentCardProps = {
 };
 
 export default function ContentCard({Title, Description, Content, Id } : ContentCardProps) {
-    const router = useRouter();
+    const router = useRouter(); // Declare use of Router, so we can use the router methods.
 
     return (
         <View id="Card Body"
@@ -26,11 +26,9 @@ export default function ContentCard({Title, Description, Content, Id } : Content
         >
             <View>
                 <Text style={{fontWeight: "bold", fontSize: 28}}>{Title}</Text>
-                <Text>{Description}</Text>
-                <Text>{Content}</Text>
-                <Text>{Id}</Text>
             </View>
-            <Pressable style={{height: 25}} onPress={() => router.push({ pathname: '/screens/PhotoView', params: { Id: Id.toString() } })}>
+            <Pressable style={{height: 25}} onPress={() => router.push({ pathname: '/screens/PhotoView',
+                params: { Id: Id.toString(), Content: Content, Title: Title  } })}>
                 <Text>Details</Text>
             </Pressable>
         </View>)

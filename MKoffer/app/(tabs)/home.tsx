@@ -19,15 +19,11 @@ export default function HomeScreen() {
     console.log(dummyData)
 
   return (
-      <View style={{flex: 1, justifyContent: 'center', alignContent: "center", width: '100%', backgroundColor: '#04A23B'}}>
-
-          <View id="Header" style={{width: '100%', justifyContent:'center', alignItems:'center', marginTop: 50, borderBottomWidth: 1,}}>
-              <Text style={{fontSize: 40, fontWeight:'bold'}}>Welcome</Text>
-          </View>
+      <View style={{flex: 1, justifyContent: 'center', alignContent: "center", width: '100%', backgroundColor: ''}}>
 
           <FlatList data={data} renderItem={({item}) => (
               <View style={{backgroundColor: '#FFF6E7'}}>
-                  <View id="Content Card Wrapper" style={{marginVertical: 20, alignItems: 'center'}}>
+                  <View id="Content Card Wrapper" style={{marginVertical: 10, alignItems: 'center'}}>
                       <ContentCard Content={item?.content} Title={item?.title} Description={item?.description} Id={item?.id} />
                   </View>
               </View>
@@ -44,20 +40,5 @@ export default function HomeScreen() {
 }
 
 const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-  },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
-  },
+
 });

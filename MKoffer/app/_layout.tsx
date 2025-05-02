@@ -32,7 +32,23 @@ export default function RootLayout() {
       <Stack>
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         <Stack.Screen name="+not-found" />
-        <Stack.Screen name="screens/PhotoView" options={{headerShown: true, title: ""}}/>
+        <Stack.Screen
+            name="screens/PhotoView"
+            options={{
+              headerShown: true,
+              title: 'Photo View',
+              headerStyle: {
+                backgroundColor: '#04A23B',
+                paddingVertical: 100,
+              },
+              headerTitleStyle: {
+                fontSize: 24,
+                fontWeight: 'bold',
+              },
+              headerTitleAlign: 'center',
+            }}
+        />
+
       </Stack>
       <StatusBar style="auto" />
     </ThemeProvider>

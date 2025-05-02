@@ -26,14 +26,27 @@ export default function TabLayout() {
           default: {},
         }),
       }}>
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: 'Home',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
-        }}
-      />
-      <Tabs.Screen
+        <Tabs.Screen
+            name="home"
+            options={{
+                headerShown: true,
+                title: 'Home',
+                headerStyle: {
+                    backgroundColor: '#04A23B',
+                    height: 75, // Same explicit height
+                },
+                headerTitleStyle: {
+                    fontSize: 24,
+                    fontWeight: 'bold',
+                },
+                headerTitleAlign: 'center',
+                tabBarIcon: ({ color }) => (
+                    <IconSymbol size={28} name="house.fill" color={color} />
+                ),
+            }}
+        />
+
+        <Tabs.Screen
         name="explore"
         options={{
           title: 'Explore',
