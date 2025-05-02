@@ -5,9 +5,10 @@ type ContentCardProps = {
     Title: string;
     Description: string;
     Content?: any;
+    Id: number;
 };
 
-export default function ContentCard({Title, Description, Content } : ContentCardProps) {
+export default function ContentCard({Title, Description, Content, Id } : ContentCardProps) {
     const router = useRouter();
 
     return (
@@ -27,8 +28,9 @@ export default function ContentCard({Title, Description, Content } : ContentCard
                 <Text style={{fontWeight: "bold", fontSize: 28}}>{Title}</Text>
                 <Text>{Description}</Text>
                 <Text>{Content}</Text>
+                <Text>{Id}</Text>
             </View>
-            <Pressable style={{height: 25}} onPress={()=> router.navigate('/screens/PhotoView')}>
+            <Pressable style={{height: 25}} onPress={() => router.push({ pathname: '/screens/PhotoView', params: { Id: Id.toString() } })}>
                 <Text>Details</Text>
             </Pressable>
         </View>)

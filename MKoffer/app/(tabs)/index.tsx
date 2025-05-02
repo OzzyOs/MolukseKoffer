@@ -8,6 +8,7 @@ type DummyPost = {
     title: string;
     description: string;
     content: string;
+    id: number;
 };
 export default function HomeScreen() {
     const [data, setData] = useState<DummyPost[]>([]);
@@ -15,10 +16,10 @@ export default function HomeScreen() {
     useEffect(()=>{
         setData(dummyData)
     })
-    // console.log(dummyData)
+    console.log(dummyData)
 
   return (
-      <View style={{flex: 1, justifyContent: 'center', alignContent: "center", width: '100%', backgroundColor: '#C1D0BC'}}>
+      <View style={{flex: 1, justifyContent: 'center', alignContent: "center", width: '100%', backgroundColor: '#04A23B'}}>
 
           <View id="Header" style={{width: '100%', justifyContent:'center', alignItems:'center', marginTop: 50, borderBottomWidth: 1,}}>
               <Text style={{fontSize: 40, fontWeight:'bold'}}>Welcome</Text>
@@ -27,12 +28,14 @@ export default function HomeScreen() {
           <FlatList data={data} renderItem={({item}) => (
               <View style={{backgroundColor: '#FFF6E7'}}>
                   <View id="Content Card Wrapper" style={{marginVertical: 20, alignItems: 'center'}}>
-                      <ContentCard Content={item?.content} Title={item?.title} Description={item?.description}/>
+                      <ContentCard Content={item?.content} Title={item?.title} Description={item?.description} Id={item?.id} />
                   </View>
               </View>
           )}/>
 
-          <Button title={"Upload"} onPress={()=> setVisible(true)}/>
+          <Pressable onPress={()=> setVisible(true)} style={{height: 50, justifyContent:'center', alignItems:'center'}}>
+              <Text style={{fontWeight:'bold', fontSize: 20}}>Upload</Text>
+          </Pressable>
               <Modal visible={visible} animationType={"slide"} >
                 <UploadModal setVisible={setVisible} />
               </Modal>
