@@ -12,10 +12,10 @@ app.get('/', (req, res) => {
     res.send('Hello World!')
 })
 
-app.post("api/posts", async (req, res) => {
+app.post("/api/posts", async (req, res) => {
     const post = req.body; // user will send this data
 
-    if(!post.title || !post.images) {
+    if(!post.title || !post.image) {
         return res.status(400).send('Please provide a title and image!')
     }
 
@@ -28,7 +28,6 @@ app.post("api/posts", async (req, res) => {
         console.error("Error creating post", err.message);
         res.status(500).json({success: false, message: "Something went wrong"});
     }
-    res.send('Got a POST request')
 })
 
 app.delete('/user', (req, res) => {
