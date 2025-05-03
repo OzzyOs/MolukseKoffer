@@ -6,11 +6,13 @@ const port = 3000
 
 dotenv.config()
 
-app.get('/Photos', (req, res) => {
+app.get('/', (req, res) => {
     res.send('Hello World!')
 })
 
-app.post('/', (req, res) => {
+app.post('/posts', async (req, res) => {
+    const post = req.body; // user will send this data
+
     res.send('Got a POST request')
 })
 
