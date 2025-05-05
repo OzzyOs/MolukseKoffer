@@ -8,9 +8,15 @@ const port = 3000
 
 app.use(express.json()); // allows us to accept json data in the req.body
 
-app.get('/', (req, res) => {
-    res.send('Hello World!')
-})
+app.get('/', async (req, res) => {
+    try {
+        const posts = await Post.find();
+        res.json(posts); // ✅ send as JSON
+    } catch (error) {
+        res.status(500).json({ message: "Failed to fetch posts." });
+    }
+});
+
 
 app.post("/api/posts", async (req, res) => {
     const post = req.body; // user will send this data

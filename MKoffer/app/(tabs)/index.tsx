@@ -1,7 +1,6 @@
 import {StyleSheet, View, Text, FlatList, Modal, Button, Pressable} from 'react-native';
 import ContentCard from "@/components/cards/ContentCard";
 import {useEffect, useState} from "react";
-import dummyData from './dummy.json';
 import UploadModal from "@/components/modals/UploadModal"; // <-- Import from assets
 
 type DummyPost = {
@@ -13,10 +12,26 @@ type DummyPost = {
 export default function HomeScreen() {
     const [data, setData] = useState<DummyPost[]>([]);
     const [visible, setVisible] = useState(false);
-    useEffect(()=>{
-        setData(dummyData)
-    })
-    console.log(dummyData)
+
+    useEffect(() => {
+        async function getData() {
+            const url = "http://192.168.2.16:3000";
+            try {
+                const response = await fetch(url);
+                if (!response.ok) {
+                    throw new Error(`Response status: ${response.status}`);
+                }
+                const data = await response.json();
+                setData(data);
+                console.log(data)
+            } catch (error) {
+                // @ts-ignore
+                console.error(error.message);
+            }
+        }
+        getData()
+
+    }, []);
 
   return (
       <View style={{flex: 1, justifyContent: 'center', alignContent: "center", width: '100%', backgroundColor: ''}}>
