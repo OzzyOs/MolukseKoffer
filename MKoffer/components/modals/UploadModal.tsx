@@ -10,9 +10,32 @@ type formData = {
 export default function UploadModal({setVisible}: modalProps){
     const { handleSubmit, control } = useForm()
 
-    const onSubmit = (data: FormData) => {
-        console.log(data);
+    const onSubmit = async (data: formData) => {
+        console.log("Form data submitted:", data);
+        const url = "http://192.168.2.16:3000/api/posts"; // Your API endpoint
+
+        try {
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            });
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            const responseData = await response.json();
+            console.log("Response from server:", responseData);
+            setVisible(false); // Close the modal after successful submission
+        } catch (error) {
+            console.error("Error sending data:", error);
+            // Handle the error (e.g., show an error message to the user)
+        }
     };
+
     return (
         <View style={{flex: 1}}>
 
@@ -28,9 +51,11 @@ export default function UploadModal({setVisible}: modalProps){
                 {/* Change to relating fields */}
                     <Controller
                         control={control}
-                        name={"name"}
+                        name={"title"}
                         defaultValue=""
                         render={({ field: {onChange, value} }) => (
+                            <View>
+                                <Text>Title</Text>
                             <TextInput
                                 style={{
                                     height: 40,
@@ -39,14 +64,58 @@ export default function UploadModal({setVisible}: modalProps){
                                     marginBottom: 10,
                                     paddingHorizontal: 10,
                                 }}
-                                placeholder="Enter your name"
+                                placeholder="Enter a title"
                                 onChangeText={onChange}
                                 value={value}
                             />
+                            </View>
+                        )}
+                    />
+                    <Controller
+                        control={control}
+                        name={"description"}
+                        defaultValue=""
+                        render={({ field: {onChange, value} }) => (
+                           <View>
+                               <Text>Description</Text>
+                            <TextInput
+                                style={{
+                                    height: 40,
+                                    borderColor: "gray",
+                                    borderWidth: 1,
+                                    marginBottom: 10,
+                                    paddingHorizontal: 10,
+                                }}
+                                placeholder="Enter a description"
+                                onChangeText={onChange}
+                                value={value}
+                            />
+                           </View>
                         )}
                     />
 
+                    <Controller
+                    control={control}
+                    name={"image"}
+                    defaultValue=""
+                    render={({ field: {onChange, value} }) => (
+                        <TextInput
+                            style={{
+                                height: 40,
+                                borderColor: "gray",
+                                borderWidth: 1,
+                                marginBottom: 10,
+                                paddingHorizontal: 10,
+                            }}
+                            placeholder="Enter your name"
+                            onChangeText={onChange}
+                            value={value}
+                        />
+                    )}
+                />
+
                     {/* Submit button */}
+                    {/* @ts-ignore */}
                     <Pressable onPress={handleSubmit(onSubmit)}>
                         <Text>Save</Text>
                     </Pressable>

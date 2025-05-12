@@ -7,9 +7,7 @@ type photoProps = {
     Title: string
 }
 export default function PhotoView(){
-    const {Id, Content, Title} = useLocalSearchParams();
-
-    console.log(Id)
+    const {Content, Title} = useLocalSearchParams();
 
     return (
     <View style={{backgroundColor: '#FFF6E7', flex: 1, alignItems: 'center'}}>
