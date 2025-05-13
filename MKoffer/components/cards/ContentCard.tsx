@@ -1,6 +1,6 @@
 import { View, Text, Pressable } from "react-native";
 import { useRouter } from "expo-router";
-import { Card } from "../cards/card"; // Import the Card component from the UI library
+import { Card } from "./card"; // Import the Card component from the UI library
 
 type ContentCardProps = {
   Title: string;
@@ -30,29 +30,6 @@ export default function ContentCard({
         padding: 10,
         backgroundColor: "lightgray",
       }}
-    >
-      <View>
-        <Text
-          style={{
-            fontWeight: "bold",
-            fontSize: 28,
-          }}
-        >
-          {Title}
-        </Text>
-      </View>
-
-      <Pressable
-        style={{ height: 25 }}
-        onPress={() =>
-          router.push({
-            pathname: "/screens/PhotoView",
-            params: { Id: Id, Content: Content, Title: Title },
-          })
-        }
-      >
-        <Text>Details</Text>
-      </Pressable>
-    </View>
+    ></Card>
   );
 }
