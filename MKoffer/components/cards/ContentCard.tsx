@@ -1,6 +1,5 @@
 import { View, Text, Pressable } from "react-native";
 import { useRouter } from "expo-router";
-import { Card } from "./card"; // Import the Card component from the UI library
 
 type ContentCardProps = {
   Title: string;
@@ -18,7 +17,7 @@ export default function ContentCard({
   const router = useRouter(); // Declare use of Router, so we can use the router methods.
 
   return (
-    <Card
+    <View
       id="Card Body"
       style={{
         borderWidth: 1,
@@ -30,6 +29,6 @@ export default function ContentCard({
         padding: 10,
         backgroundColor: "lightgray",
       }}
-    ></Card>
+    ></View>
   );
 }
