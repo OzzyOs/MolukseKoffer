@@ -25,11 +25,17 @@ export default function ContentCard({Title, Description, Content, Id } : Content
         }}
         >
             <View>
-                <Text style={{fontWeight: "bold", fontSize: 28}}>{Title}</Text>
+                <Text style={{
+                    fontWeight: "bold",
+                    fontSize: 28
+                }}>
+                    {Title}
+                </Text>
             </View>
-            <Pressable style={{height: 25}} onPress={() => router.push({ pathname: '/screens/PhotoView',
-                params: { Id: Id.toString(), Content: Content, Title: Title  } })}>
+
+            <Pressable style={{height: 25}} onPress={() => router.push({ pathname: '/screens/PhotoView', params: { Id: Id, Content: Content, Title: Title  } })}>
                 <Text>Details</Text>
             </Pressable>
+
         </View>)
 }

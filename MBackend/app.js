@@ -8,14 +8,20 @@ const port = 3000
 
 app.use(express.json()); // allows us to accept json data in the req.body
 
-app.get('/', (req, res) => {
-    res.send('Hello World!')
-})
+app.get('/', async (req, res) => {
+    try {
+        const posts = await Post.find();
+        res.json(posts); // ✅ send as JSON
+    } catch (error) {
+        res.status(500).json({ message: "Failed to fetch posts." });
+    }
+});
 
-app.post("api/posts", async (req, res) => {
+
+app.post("/api/posts", async (req, res) => {
     const post = req.body; // user will send this data
 
-    if(!post.title || !post.images) {
+    if(!post.title || !post.image) {
         return res.status(400).send('Please provide a title and image!')
     }
 
@@ -28,7 +34,6 @@ app.post("api/posts", async (req, res) => {
         console.error("Error creating post", err.message);
         res.status(500).json({success: false, message: "Something went wrong"});
     }
-    res.send('Got a POST request')
 })
 
 app.delete('/user', (req, res) => {

@@ -27,7 +27,7 @@ export default function TabLayout() {
         }),
       }}>
         <Tabs.Screen
-            name="home"
+            name="index"
             options={{
                 headerShown: true,
                 title: 'Home',
