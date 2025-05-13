@@ -8,6 +8,11 @@ type modalProps = {
 type formData = {
   name: string;
 };
+
+// todo add image upload
+// todo add styling
+// todo add or edit components to fit form design
+
 export default function UploadModal({ setVisible }: modalProps) {
   const { handleSubmit, control } = useForm();
 
