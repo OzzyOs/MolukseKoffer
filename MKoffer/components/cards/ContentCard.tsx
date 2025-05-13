@@ -1,41 +1,58 @@
-import {View, Text, Pressable} from 'react-native';
-import { useRouter } from 'expo-router';
+import { View, Text, Pressable } from "react-native";
+import { useRouter } from "expo-router";
+import { Card } from "../cards/card"; // Import the Card component from the UI library
 
 type ContentCardProps = {
-    Title: string;
-    Description: string;
-    Content?: any;
-    Id: number;
+  Title: string;
+  Description: string;
+  Content?: any;
+  Id: number;
 };
 
-export default function ContentCard({Title, Description, Content, Id } : ContentCardProps) {
-    const router = useRouter(); // Declare use of Router, so we can use the router methods.
+export default function ContentCard({
+  Title,
+  Description,
+  Content,
+  Id,
+}: ContentCardProps) {
+  const router = useRouter(); // Declare use of Router, so we can use the router methods.
 
-    return (
-        <View id="Card Body"
-              style={{
-                  borderWidth: 1,
-                  minHeight: 300,
-                  maxHeight: 300,
-                  minWidth: 400,
-                  maxWidth: 400,
-                  borderRadius: 5,
-                  padding: 10,
-                  backgroundColor:'lightgray'
-        }}
+  return (
+    <Card
+      id="Card Body"
+      style={{
+        borderWidth: 1,
+        minHeight: 300,
+        maxHeight: 300,
+        minWidth: 400,
+        maxWidth: 400,
+        borderRadius: 5,
+        padding: 10,
+        backgroundColor: "lightgray",
+      }}
+    >
+      <View>
+        <Text
+          style={{
+            fontWeight: "bold",
+            fontSize: 28,
+          }}
         >
-            <View>
-                <Text style={{
-                    fontWeight: "bold",
-                    fontSize: 28
-                }}>
-                    {Title}
-                </Text>
-            </View>
+          {Title}
+        </Text>
+      </View>
 
-            <Pressable style={{height: 25}} onPress={() => router.push({ pathname: '/screens/PhotoView', params: { Id: Id, Content: Content, Title: Title  } })}>
-                <Text>Details</Text>
-            </Pressable>
-
-        </View>)
+      <Pressable
+        style={{ height: 25 }}
+        onPress={() =>
+          router.push({
+            pathname: "/screens/PhotoView",
+            params: { Id: Id, Content: Content, Title: Title },
+          })
+        }
+      >
+        <Text>Details</Text>
+      </Pressable>
+    </View>
+  );
 }
