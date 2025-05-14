@@ -1,6 +1,7 @@
 import { Link, Tabs } from "expo-router";
 import { Button, useTheme } from "tamagui";
-import { Atom, AudioWaveform } from "@tamagui/lucide-icons";
+import { Atom, AudioWaveform, House } from "@tamagui/lucide-icons";
+import Colors from "constants/Colors";
 
 export default function TabLayout() {
   const theme = useTheme();
@@ -8,7 +9,7 @@ export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: theme.red10.val,
+        tabBarActiveTintColor: theme.green10.val,
         tabBarStyle: {
           backgroundColor: theme.background.val,
           borderTopColor: theme.borderColor.val,
@@ -23,15 +24,9 @@ export default function TabLayout() {
       <Tabs.Screen
         name="index"
         options={{
-          title: "Tab One",
-          tabBarIcon: ({ color }) => <Atom color={color as any} />,
-          headerRight: () => (
-            <Link href="/../components/modals/modal" asChild>
-              <Button mr="$4" bg="$green8" color="$green12">
-                Forever
-              </Button>
-            </Link>
-          ),
+          headerTitleAlign: "center",
+          title: "Home",
+          tabBarIcon: ({ color }) => <House color={color as any} />,
         }}
       />
       <Tabs.Screen
@@ -39,13 +34,13 @@ export default function TabLayout() {
         options={{
           title: "Tab Two",
           tabBarIcon: ({ color }) => <AudioWaveform color={color as any} />,
-          headerRight: () => (
-            <Link href="/components/modals/modal" asChild>
-              <Button mr="$4" bg="$green8" color="$green12">
-                Forever2
-              </Button>
-            </Link>
-          ),
+        }}
+      />
+      <Tabs.Screen
+        name="three"
+        options={{
+          title: "Tab Three",
+          tabBarIcon: ({ color }) => <Atom color={color as any} />,
         }}
       />
     </Tabs>

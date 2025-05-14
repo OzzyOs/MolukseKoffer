@@ -12,6 +12,7 @@ export default function ModalScreen() {
         >
           Hello!
         </Anchor>
+
         <Anchor
           color="$accent10"
           href="https://github.com/tamagui/tamagui"
@@ -24,3 +25,7 @@ export default function ModalScreen() {
     </View>
   );
 }
+
+ModalScreen.options = {
+  title: "Modal Title",
+};
