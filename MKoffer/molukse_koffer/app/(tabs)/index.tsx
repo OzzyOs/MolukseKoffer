@@ -1,15 +1,20 @@
-import { ExternalLink } from "@tamagui/lucide-icons";
-import { Anchor, Card, H2, Paragraph, XStack, YStack } from "tamagui";
+import { Paragraph, XStack, YStack, ScrollView } from "tamagui";
 import { useEffect, useState } from "react";
-import { ToastControl } from "app/CurrentToast";
 import PostCard from "app/PostCard";
 
+type Post = {
+  title: string;
+  description: string;
+  image: string;
+  content: string;
+};
+
 export default function TabOneScreen() {
-  const [data, setData] = useState();
+  const [data, setData] = useState<Post[]>([]);
 
   useEffect(() => {
     async function getData() {
-      const url = "https://localhost:3000";
+      const url = "http://192.168.2.16:3000/";
 
       try {
         const response = await fetch(url);
@@ -23,23 +28,29 @@ export default function TabOneScreen() {
         console.log(error.message);
       }
     }
+
     getData();
   }, []);
 
   return (
-    <YStack flex={1} items="center" gap="$8" px="$10" pt="$5" bg="$background">
-      <XStack
+    <ScrollView height="$20">
+      <YStack
+        flex={1}
         items="center"
-        justify="center"
-        flexWrap="wrap"
-        gap="$1.5"
-        position="absolute"
+        gap="$8"
+        px="$10"
+        pt="$5"
+        bg="$background"
       >
-        <Paragraph marginBlock="$2">Feed</Paragraph>
-        <PostCard
-          post={{ title: "First Post", content: "This is my first post" }}
-        />
-      </XStack>
-    </YStack>
+        <XStack flexWrap="wrap" verticalAlign="center" justify="center">
+          <Paragraph marginBlock="$2">Feed</Paragraph>
+
+          {data &&
+            data.map((i) => (
+              <PostCard post={{ title: i.title, description: i.description }} />
+            ))}
+        </XStack>
+      </YStack>
+    </ScrollView>
   );
 }

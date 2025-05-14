@@ -2,8 +2,9 @@ import { Card, Paragraph } from "tamagui";
 
 interface Post {
   title: string;
-  content: string;
+  description: string;
 }
+
 export default function PostCard({ post }: { post: Post }) {
   return (
     <Card
@@ -14,7 +15,7 @@ export default function PostCard({ post }: { post: Post }) {
       borderWidth="$0.25"
     >
       <Paragraph fontSize="$5">{post.title}</Paragraph>
-      <Paragraph fontSize="$1">{post.content}</Paragraph>
+      <Paragraph fontSize="$1">{post.description}</Paragraph>
     </Card>
   );
 }
