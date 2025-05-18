@@ -1,6 +1,6 @@
 import { Paragraph, XStack, YStack, ScrollView } from "tamagui";
 import { useEffect, useState } from "react";
-import PostCard from "app/PostCard";
+import PostCard from "../(components)/PostCard";
 
 type Post = {
   title: string;
