@@ -1,6 +1,7 @@
-import { Paragraph, XStack, YStack, ScrollView } from "tamagui";
+import { Paragraph, XStack, YStack, ScrollView, Card, View } from "tamagui";
 import { useEffect, useState } from "react";
 import PostCard from "../(components)/PostCard";
+import { AlignCenter } from "@tamagui/lucide-icons";
 
 type Post = {
   title: string;
@@ -11,12 +12,14 @@ type Post = {
 
 export default function TabOneScreen() {
   const [data, setData] = useState<Post[]>([]);
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
     async function getData() {
       const url = "http://192.168.2.16:3000/";
 
       try {
+        setLoading(true)
         const response = await fetch(url);
         if (!response.ok) {
           throw new Error(`Reponse status: ${response.status}`);
@@ -26,6 +29,8 @@ export default function TabOneScreen() {
         setData(data);
       } catch (error) {
         console.log(error.message);
+      } finally {
+        setLoading(false)
       }
     }
 
@@ -33,22 +38,24 @@ export default function TabOneScreen() {
   }, []);
 
   return (
-    <ScrollView height="$20">
+    <ScrollView height="100%">
       <YStack
         flex={1}
         items="center"
         gap="$8"
         px="$10"
         pt="$5"
-        bg="$background"
       >
         <XStack flexWrap="wrap" verticalAlign="center" justify="center">
-          <Paragraph marginBlock="$2">Feed</Paragraph>
-
-          {data &&
+          {data && data.length > 0 ? (
             data.map((i) => (
-              <PostCard post={{ title: i.title, description: i.description }} />
-            ))}
+              <PostCard key={i.title} post={{ title: i.title, description: i.description }} />
+            ))
+            ) : (
+              <View marginBlockStart="$20" justify="center">
+                <Paragraph fontSize="$6">Er is geen data beschikbaar</Paragraph>
+              </View>
+            )}
         </XStack>
       </YStack>
     </ScrollView>

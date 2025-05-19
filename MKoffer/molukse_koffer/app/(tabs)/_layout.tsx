@@ -15,7 +15,7 @@ export default function TabLayout() {
           borderTopColor: theme.borderColor.val,
         },
         headerStyle: {
-          backgroundColor: theme.background.val,
+          backgroundColor: theme.green11.val,
           borderBottomColor: theme.borderColor.val,
         },
         headerTintColor: theme.color.val,
@@ -24,7 +24,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="index"
         options={{
-          headerTitleAlign: "center",
+          headerTintColor: theme.white1.val,
           title: "Home",
           tabBarIcon: ({ color }) => <House color={color as any} />,
         }}
@@ -32,6 +32,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="two"
         options={{
+          headerTintColor: theme.white1.val,
           title: "Tab Two",
           tabBarIcon: ({ color }) => <AudioWaveform color={color as any} />,
         }}
@@ -39,6 +40,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="three"
         options={{
+          headerTintColor: theme.white1.val,
           title: "Tab Three",
           tabBarIcon: ({ color }) => <Atom color={color as any} />,
         }}
