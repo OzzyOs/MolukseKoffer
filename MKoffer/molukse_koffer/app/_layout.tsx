@@ -64,7 +64,7 @@ function RootLayoutNav() {
         />
 
         <Stack.Screen
-          name="modal"
+          name="(modals)/modal"
           options={{
             title: 'Tamagui + Expo',
             presentation: 'modal',

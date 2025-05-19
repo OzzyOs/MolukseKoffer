@@ -1,7 +1,6 @@
 import { Paragraph, XStack, YStack, ScrollView, Card, View } from "tamagui";
 import { useEffect, useState } from "react";
 import PostCard from "../(components)/PostCard";
-import { AlignCenter } from "@tamagui/lucide-icons";
 
 type Post = {
   title: string;

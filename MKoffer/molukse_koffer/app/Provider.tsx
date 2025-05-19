@@ -30,3 +30,5 @@ export function Provider({ children, ...rest }: Omit<TamaguiProviderProps, 'conf
     </TamaguiProvider>
   )
 }
+
+export default Provider;
