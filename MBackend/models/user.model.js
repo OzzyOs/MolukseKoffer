@@ -1,4 +1,7 @@
 import mongoose from 'mongoose';
+import AutoIncrementFactory from 'mongoose-sequence';
+
+const AutoIncrement = AutoIncrementFactory(mongoose);
 
 const UserSchema = new mongoose.Schema({
     userName: {
@@ -20,11 +23,14 @@ const UserSchema = new mongoose.Schema({
     email: {
         type: String,
         required: true
-    },
-}, {
-    timestamps: true // createdAt, updatedAt
-})
+    }
+}, 
+    {
+        timestamps: true // createdAt, updatedAt
+    })
 
-const Post = mongoose.model('User', UserSchema);
+UserSchema.plugin(AutoIncrement, {inc_field: 'id'});
 
-export default Post;
+const User = mongoose.model('User', UserSchema);
+
+export default User;
