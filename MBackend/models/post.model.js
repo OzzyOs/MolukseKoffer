@@ -1,4 +1,7 @@
 import mongoose from 'mongoose';
+import AutoIncrementFactory from 'mongoose-sequence';
+
+const AutoIncrement = AutoIncrementFactory(mongoose);
 
 const PostSchema = new mongoose.Schema({
     title: {
@@ -14,8 +17,11 @@ const PostSchema = new mongoose.Schema({
     },
     author: String,
 }, {
-    timestamps: true // createdAt, updatedAt
+    timestamps: true, // createdAt, updatedAt
+    _id: false
 })
+
+PostSchema.plugin(AutoIncrement, {inc_field : 'id'})
 
 const Post = mongoose.model('Post', PostSchema);
 

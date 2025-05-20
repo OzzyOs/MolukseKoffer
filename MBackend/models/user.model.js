@@ -26,7 +26,8 @@ const UserSchema = new mongoose.Schema({
     }
 }, 
     {
-        timestamps: true // createdAt, updatedAt
+        timestamps: true, // createdAt, updatedAt
+        _id: false
     })
 
 UserSchema.plugin(AutoIncrement, {inc_field: 'id'});
