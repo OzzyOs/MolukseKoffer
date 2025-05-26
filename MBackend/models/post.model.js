@@ -18,10 +18,9 @@ const PostSchema = new mongoose.Schema({
     author: String,
 }, {
     timestamps: true, // createdAt, updatedAt
-    _id: false
 })
 
-PostSchema.plugin(AutoIncrement, {inc_field : 'id'})
+PostSchema.plugin(AutoIncrement, {inc_field : 'post_id'})
 
 const Post = mongoose.model('Post', PostSchema);
 

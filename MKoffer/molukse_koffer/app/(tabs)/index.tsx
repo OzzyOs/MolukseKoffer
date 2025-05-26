@@ -15,7 +15,7 @@ export default function TabOneScreen() {
 
   useEffect(() => {
     async function getData() {
-      const url = "http://localhost:3000/";
+      const url = "http://192.168.178.67:3000/";
 
       try {
         setLoading(true)
@@ -37,13 +37,13 @@ export default function TabOneScreen() {
   }, []);
 
   return (
-    <ScrollView height="100%">
+    <ScrollView height="100%" width="100%">
       <YStack
         flex={1}
         items="center"
         gap="$8"
-        px="$10"
         pt="$5"
+        width="100%"
       >
         <XStack flexWrap="wrap" verticalAlign="center" justify="center">
           {data && data.length > 0 ? (
