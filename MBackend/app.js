@@ -6,7 +6,7 @@ import cors from "cors";
 
 const app = express();
 const port = 3000;
-app.use(cors);
+app.use(cors());
 
 app.use(express.json());
 
@@ -67,7 +67,7 @@ app.delete("/user", (req, res) => {
 
 console.log(process.env.MONGO_URI);
 
-app.listen(port, () => {
+app.listen(port,'0.0.0.0', () => {
   connectDb();
   console.log(`Example app listening on port ${port}`);
 });
