@@ -30,7 +30,7 @@ const UserSchema = new mongoose.Schema({
         _id: false
     })
 
-UserSchema.plugin(AutoIncrement, {inc_field: 'id'});
+UserSchema.plugin(AutoIncrement, {inc_field: 'user_id'});
 
 const User = mongoose.model('User', UserSchema);
 
