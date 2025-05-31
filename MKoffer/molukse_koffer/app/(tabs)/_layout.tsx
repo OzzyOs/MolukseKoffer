@@ -22,6 +22,7 @@ export default function TabLayout() {
         headerTintColor: theme.color.val,
       }}
     >
+
       <Tabs.Screen
         name="index"
         options={{
@@ -39,7 +40,7 @@ export default function TabLayout() {
           ),
           headerRight: () => (
               <Button
-                onPress={() => router.push("/modal")}
+                onPress={() => router.push("/createPostModal")}
                 style={{ marginRight: 15 }}
                 icon={<Plus size={12}/>}
                 borderWidth={0}
@@ -48,6 +49,7 @@ export default function TabLayout() {
           }
         }
       />
+
       <Tabs.Screen
         name="two"
         options={{
@@ -62,9 +64,18 @@ export default function TabLayout() {
               start={[0, 1]}
               end={[0, 0]}
             />
+          ),
+          headerRight: ()=> (
+            <Button 
+              onPress={()=> router.push("/createLocationModal")}
+              style={{ marginRight: 15 }}
+              icon={<Plus size={12}/>}
+              borderWidth={0}
+              />
           )
         }}
       />
+
       <Tabs.Screen
         name="three"
         options={{
@@ -79,6 +90,14 @@ export default function TabLayout() {
               start={[0, 1]}
               end={[0, 0]}
             />
+          ),
+          headerRight: ()=> (
+            <Button 
+              onPress={()=> router.push("/createPersonModal")}
+              style={{ marginRight: 15 }}
+              icon={<Plus size={12}/>}
+              borderWidth={0}
+              />
           )
         }}
       />

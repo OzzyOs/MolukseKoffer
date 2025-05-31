@@ -7,6 +7,8 @@ import { useFonts } from 'expo-font'
 import { SplashScreen, Stack } from 'expo-router'
 import { Provider } from './Provider'
 import { useTheme } from 'tamagui'
+import { LinearGradient } from 'tamagui/linear-gradient'
+
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -64,13 +66,71 @@ function RootLayoutNav() {
         />
 
         <Stack.Screen
-          name="(modals)/modal"
+          name="(modals)/createPostModal"
           options={{
-            title: 'Tamagui + Expo',
+            title: 'Upload content',
             presentation: 'modal',
             animation: 'slide_from_right',
             gestureEnabled: true,
             gestureDirection: 'horizontal',
+            headerTintColor: theme.white1.val,
+            headerBackground: ()=>(
+              <LinearGradient 
+                width="100%"
+                height="90%"
+                colors={['$green12', '$green10']}
+                start={[0, 1]}
+                end={[0, 0]}
+              />
+            ),
+            contentStyle: {
+              backgroundColor: theme.background.val,
+            },
+          }}
+        />
+
+        <Stack.Screen
+          name="(modals)/createLocationModal"
+          options={{
+            title: 'Upload Location',
+            presentation: 'modal',
+            animation: 'slide_from_right',
+            gestureEnabled: true,
+            gestureDirection: 'horizontal',
+            headerTintColor: theme.white1.val,
+            headerBackground: ()=>(
+              <LinearGradient 
+                width="100%"
+                height="90%"
+                colors={['$green12', '$green10']}
+                start={[0, 1]}
+                end={[0, 0]}
+              />
+            ),
+            contentStyle: {
+              backgroundColor: theme.background.val,
+            },
+          }}
+        />
+
+        <Stack.Screen
+          name="(modals)/createPersonModal"
+          options={{
+            title: 'Upload Person',
+            presentation: 'modal',
+            animation: 'slide_from_right',
+            gestureEnabled: true,
+            gestureDirection: 'horizontal',
+            headerTintColor: theme.white1.val,
+            headerBackground: ()=>(
+              <LinearGradient 
+                width="100%"
+                height="90%"
+                colors={['$green12', '$green10']}
+                start={[0, 1]}
+                end={[0, 0]}
+              />
+            ),
             contentStyle: {
               backgroundColor: theme.background.val,
             },

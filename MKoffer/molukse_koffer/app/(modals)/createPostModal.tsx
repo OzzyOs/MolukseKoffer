@@ -1,6 +1,6 @@
 import { Anchor, Paragraph, View, XStack } from "tamagui";
 
-export default function ModalScreen() {
+export default function CreatePostModal() {
   return (
     <View flex={1} items="center" justify="center">
       <XStack gap="$2">
@@ -26,6 +26,6 @@ export default function ModalScreen() {
   );
 }
 
-ModalScreen.options = {
+CreatePostModal.options = {
   title: "Modal Title",
 };
