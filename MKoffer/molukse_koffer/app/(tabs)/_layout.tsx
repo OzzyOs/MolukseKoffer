@@ -1,10 +1,11 @@
-import { Tabs } from "expo-router";
-import { useTheme } from "tamagui";
-import { Atom, AudioWaveform, House } from "@tamagui/lucide-icons";
+import { Tabs, useRouter } from "expo-router";
+import { Button, useTheme } from "tamagui";
+import { Atom, AudioWaveform, House, Plus } from "@tamagui/lucide-icons";
 import { LinearGradient } from 'tamagui/linear-gradient'
 
 export default function TabLayout() {
   const theme = useTheme();
+  const router = useRouter();
 
   return (
     <Tabs
@@ -15,7 +16,7 @@ export default function TabLayout() {
           borderTopColor: theme.borderColor.val,
         },
         headerStyle: {
-          backgroundColor: theme.green11.val,
+          backgroundColor: theme.green10.val,
           borderBottomColor: theme.borderColor.val,
         },
         headerTintColor: theme.color.val,
@@ -35,7 +36,15 @@ export default function TabLayout() {
               start={[0, 1]}
               end={[0, 0]}
             />
-          )
+          ),
+          headerRight: () => (
+              <Button
+                onPress={() => router.push("/modal")}
+                style={{ marginRight: 15 }}
+                icon={<Plus size={12}/>}
+                borderWidth={0}
+              />
+            )
           }
         }
       />
