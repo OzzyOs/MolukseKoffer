@@ -70,14 +70,14 @@ function RootLayoutNav() {
           options={{
             title: 'Upload content',
             presentation: 'modal',
-            animation: 'slide_from_right',
+            animation: 'slide_from_bottom',
             gestureEnabled: true,
-            gestureDirection: 'horizontal',
+            gestureDirection: 'vertical',
             headerTintColor: theme.white1.val,
             headerBackground: ()=>(
               <LinearGradient 
                 width="100%"
-                height="90%"
+                height="100%"
                 colors={['$green12', '$green10']}
                 start={[0, 1]}
                 end={[0, 0]}
@@ -94,14 +94,14 @@ function RootLayoutNav() {
           options={{
             title: 'Upload Location',
             presentation: 'modal',
-            animation: 'slide_from_right',
+            animation: 'slide_from_bottom',
             gestureEnabled: true,
             gestureDirection: 'horizontal',
             headerTintColor: theme.white1.val,
             headerBackground: ()=>(
               <LinearGradient 
                 width="100%"
-                height="90%"
+                height="100%"
                 colors={['$green12', '$green10']}
                 start={[0, 1]}
                 end={[0, 0]}
@@ -118,14 +118,14 @@ function RootLayoutNav() {
           options={{
             title: 'Upload Person',
             presentation: 'modal',
-            animation: 'slide_from_right',
+            animation: 'slide_from_bottom',
             gestureEnabled: true,
             gestureDirection: 'horizontal',
             headerTintColor: theme.white1.val,
             headerBackground: ()=>(
               <LinearGradient 
                 width="100%"
-                height="90%"
+                height="100%"
                 colors={['$green12', '$green10']}
                 start={[0, 1]}
                 end={[0, 0]}

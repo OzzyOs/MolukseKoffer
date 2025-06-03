@@ -1,7 +1,8 @@
 import { Tabs, useRouter } from "expo-router";
-import { Button, useTheme } from "tamagui";
+import { useTheme } from "tamagui";
 import { Atom, AudioWaveform, House, Plus } from "@tamagui/lucide-icons";
 import { LinearGradient } from 'tamagui/linear-gradient'
+import { TouchableOpacity } from "react-native";
 
 export default function TabLayout() {
   const theme = useTheme();
@@ -39,11 +40,9 @@ export default function TabLayout() {
             />
           ),
           headerRight: () => (
-              <Button
+              <TouchableOpacity
                 onPress={() => router.push("../(modals)/createPostModal")}
-                style={{ marginRight: 15 }}
-                icon={<Plus size={12}/>}
-                borderWidth={0}
+                style={{ marginRight: 15, height: 15, width: 15, borderWidth: 1}}
               />
             )
           }
@@ -66,11 +65,9 @@ export default function TabLayout() {
             />
           ),
           headerRight: ()=> (
-            <Button 
+            <TouchableOpacity 
               onPress={()=> router.push("../(modals)/createLocationModal")}
-              style={{ marginRight: 15 }}
-              icon={<Plus size={12}/>}
-              borderWidth={0}
+              style={{ marginRight: 15, height: 15, width: 15, borderWidth: 1}}
               />
           )
         }}
@@ -92,11 +89,9 @@ export default function TabLayout() {
             />
           ),
           headerRight: ()=> (
-            <Button 
+            <TouchableOpacity 
               onPress={()=> router.push("../(modals)/createPersonModal")}
-              style={{ marginRight: 15 }}
-              icon={<Plus size={12}/>}
-              borderWidth={0}
+              style={{ marginRight: 15, height: 15, width: 15, borderWidth: 1}}
               />
           )
         }}
