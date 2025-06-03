@@ -40,7 +40,7 @@ export default function TabLayout() {
           ),
           headerRight: () => (
               <Button
-                onPress={() => router.push("/createPostModal")}
+                onPress={() => router.push("../(modals)/createPostModal")}
                 style={{ marginRight: 15 }}
                 icon={<Plus size={12}/>}
                 borderWidth={0}
@@ -67,7 +67,7 @@ export default function TabLayout() {
           ),
           headerRight: ()=> (
             <Button 
-              onPress={()=> router.push("/createLocationModal")}
+              onPress={()=> router.push("../(modals)/createLocationModal")}
               style={{ marginRight: 15 }}
               icon={<Plus size={12}/>}
               borderWidth={0}
@@ -86,14 +86,14 @@ export default function TabLayout() {
              <LinearGradient 
               width="100%"
               height="100%"
-              colors={['green12', '$green10']}
+              colors={['$green12', '$green10']}
               start={[0, 1]}
               end={[0, 0]}
             />
           ),
           headerRight: ()=> (
             <Button 
-              onPress={()=> router.push("/createPersonModal")}
+              onPress={()=> router.push("../(modals)/createPersonModal")}
               style={{ marginRight: 15 }}
               icon={<Plus size={12}/>}
               borderWidth={0}
