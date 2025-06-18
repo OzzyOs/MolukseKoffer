@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "241655659690",
+    "project_id": "mkoffer-43c84",
+    "storage_bucket": "mkoffer-43c84.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:241655659690:android:9c48ad0e61b8486ce624d3",
+        "android_client_info": {
+          "package_name": "com.moluksekoffer.maluku"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAmWkNfXouWWx7kHkxkWIUAfJTLZQ6htf4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
