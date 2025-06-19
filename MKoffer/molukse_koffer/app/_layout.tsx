@@ -66,6 +66,23 @@ function RootLayoutNav() {
         />
 
         <Stack.Screen
+          name="(details)"
+          options={{
+            headerTitle: 'Post details',  
+            headerTintColor: theme.white1.val,
+             headerBackground: ()=>(
+              <LinearGradient 
+                width="100%"
+                height="100%"
+                colors={['$green12', '$green10']}
+                start={[0, 1]}
+                end={[0, 0]}
+              />
+            ),
+          }}
+        />
+
+        <Stack.Screen
           name="(modals)/createPostModal"
           options={{
             title: 'Upload content',
